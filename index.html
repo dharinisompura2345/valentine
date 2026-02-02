@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💛</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffeef2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+.name {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ff4d6d;
+}
+
+h1 {
+  color: #ff4d6d;
+}
+
+.tagline {
+  margin-bottom: 15px;
+}
+
+.gif {
+  width: 220px;
+  height: auto;
+  margin: 15px 0;
+}
+
+.buttons {
+  position: relative;
+  height: 80px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: #bdbdbd;
+  position: absolute;
+}
+
+.footer {
+  margin-top: 15px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="name">Chirag 💛</div>
+
+  <h1>Will you be my Valentine? 💖</h1>
+
+  <div class="tagline">Long distance, but always my person ♾️</div>
+
+  <img id="gif" class="gif" src="togepi-happy.gif" alt="Togepi">
+
+  <div class="buttons">
+    <button id="yesBtn">Yes 💘</button>
+    <button id="noBtn">No 🥺</button>
+  </div>
+
+  <div class="footer">Made with love by Dharini 💛</div>
+</div>
+
+<script>
+let noCount = 0;
+
+const gif = document.getElementById("gif");
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+
+const noTexts = [
+  "Are you sure? 🥺",
+  "Think again 😢",
+  "That hurts 💔",
+  "Pleaseee 😭",
+  "You can't escape 😈"
+];
+
+noBtn.addEventListener("click", () => {
+  noCount++;
+
+  // Change GIF based on clicks
+  if (noCount <= 2) {
+    gif.src = "togepi-sad.gif";
+  } else {
+    gif.src = "togepi-cry.gif";
+  }
+
+  // Change No button text
+  noBtn.innerText = noTexts[Math.min(noCount - 1, noTexts.length - 1)];
+
+  // Move No button randomly
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 40;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+yesBtn.addEventListener("click", () => {
+  window.location.href = "yes.html";
+});
+</script>
+
+</body>
+</html>
